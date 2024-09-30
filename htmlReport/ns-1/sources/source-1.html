@@ -1,0 +1,229 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > CalcInterest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: CalcInterest (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CalcInterest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    95.7%
+  </span>
+  <span class="absValue">
+    (44/46)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    93.2%
+  </span>
+  <span class="absValue">
+    (41/44)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode"><b class="nc">&nbsp;public class CalcInterest {</b>
+&nbsp;    public static float computeLoanInterest(Double loanAmount, Integer yearLoan, Integer loanType) {
+&nbsp;        try {
+&nbsp;            // Check for null inputs
+<b class="pc">&nbsp;            if (loanAmount == null || yearLoan == null || loanType == null) {</b>
+<b class="fc">&nbsp;                return -1;</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            double interestRate = -1;</b>
+&nbsp;
+&nbsp;            // Return -1 for invalid numeric values like negative or zero inputs
+<b class="fc">&nbsp;            if (loanAmount &lt;= 0 || yearLoan &lt;= 0) {</b>
+<b class="fc">&nbsp;                return -1;</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            if (loanType != 1 &amp;&amp; loanType != 2) {</b>
+<b class="fc">&nbsp;                return -1; // Return -1 for invalid loan type</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            if (loanType == 1) { // Home loan</b>
+<b class="fc">&nbsp;                if (loanAmount &lt; 100_000) {</b>
+<b class="fc">&nbsp;                    if (yearLoan &lt;= 5) {</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;8% interest rate applied.&quot;);</b>
+<b class="fc">&nbsp;                        interestRate = 0.08;</b>
+<b class="fc">&nbsp;                    } else if (yearLoan &lt;= 10) {</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;6.5% interest rate applied.&quot;);</b>
+<b class="fc">&nbsp;                        interestRate = 0.065;</b>
+&nbsp;                    } else {
+<b class="fc">&nbsp;                        System.out.println(&quot;5.5% interest rate applied.&quot;);</b>
+<b class="fc">&nbsp;                        interestRate = 0.055;</b>
+&nbsp;                    }
+<b class="fc">&nbsp;                } else if (loanAmount &lt; 500_000 &amp;&amp; yearLoan &lt;= 10) {</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;6.5% interest rate applied.&quot;);</b>
+<b class="fc">&nbsp;                    interestRate = 0.065;</b>
+<b class="fc">&nbsp;                } else if (loanAmount &gt;= 500_000 &amp;&amp; yearLoan &gt;= 11) {</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;5.5% interest rate applied.&quot;);</b>
+<b class="fc">&nbsp;                    interestRate = 0.055;</b>
+&nbsp;                }
+&nbsp;            } else { // Property loan
+<b class="fc">&nbsp;                if (loanAmount &lt; 100_000) {</b>
+<b class="fc">&nbsp;                    if (yearLoan &lt;= 5) {</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;12% interest rate applied.&quot;);</b>
+<b class="fc">&nbsp;                        interestRate = 0.12;</b>
+<b class="fc">&nbsp;                    } else if (yearLoan &lt;= 10) {</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;8.5% interest rate applied.&quot;);</b>
+<b class="fc">&nbsp;                        interestRate = 0.085;</b>
+&nbsp;                    } else {
+<b class="fc">&nbsp;                        System.out.println(&quot;7% interest rate applied.&quot;);</b>
+<b class="fc">&nbsp;                        interestRate = 0.07;</b>
+&nbsp;                    }
+<b class="fc">&nbsp;                } else if (loanAmount &lt; 500_000 &amp;&amp; yearLoan &lt;= 10) {</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;8.5% interest rate applied.&quot;);</b>
+<b class="fc">&nbsp;                    interestRate = 0.085;</b>
+<b class="fc">&nbsp;                } else if (loanAmount &gt;= 500_000 &amp;&amp; yearLoan &gt;= 11) {</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;7% interest rate applied.&quot;);</b>
+<b class="fc">&nbsp;                    interestRate = 0.07;</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            if (interestRate == -1) {</b>
+<b class="fc">&nbsp;                return -1;</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            return (float) (loanAmount * interestRate * yearLoan);</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+&nbsp;            // Catch any exception and return -1
+<b class="nc">&nbsp;            return -1;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /*public static void main(String[] args) {
+&nbsp;
+&nbsp;        //System.out.println(computeLoanInterest(&quot;sdsadfasd&quot;,null,null));
+&nbsp;        *//*Scanner scanner = new Scanner(System.in);
+&nbsp;
+&nbsp;        while (true) {
+&nbsp;            System.out.println(&quot;\n--- Loan Interest Calculator ---&quot;);
+&nbsp;
+&nbsp;            // Get loan amount
+&nbsp;            System.out.print(&quot;Enter loan amount (e.g., 50000): &quot;);
+&nbsp;            double loanAmount = scanner.nextDouble();
+&nbsp;
+&nbsp;            // Get loan duration in years
+&nbsp;            System.out.print(&quot;Enter loan duration in years (e.g., 4): &quot;);
+&nbsp;            int yearLoan = scanner.nextInt();
+&nbsp;
+&nbsp;            // Get loan type (1 for home loan, 2 for property loan)
+&nbsp;            System.out.print(&quot;Enter loan type (1 for Home Loan, 2 for Property Loan): &quot;);
+&nbsp;            int loanType = scanner.nextInt();
+&nbsp;
+&nbsp;            // Calculate interest
+&nbsp;            float totalInterest = computeLoanInterest(loanAmount, yearLoan, loanType);
+&nbsp;
+&nbsp;            // Output the result
+&nbsp;            if (totalInterest == -1) {
+&nbsp;                System.out.println(&quot;Error: Invalid loan inputs or loan type.&quot;);
+&nbsp;            } else {
+&nbsp;                System.out.printf(&quot;Total Interest to be paid: $%.2f%n&quot;, totalInterest);
+&nbsp;            }
+&nbsp;
+&nbsp;            // Ask if user wants to calculate another loan or exit
+&nbsp;            System.out.print(&quot;Do you want to calculate another loan? (yes/no): &quot;);
+&nbsp;            String response = scanner.next();
+&nbsp;
+&nbsp;            if (response.equalsIgnoreCase(&quot;no&quot;)) {
+&nbsp;                System.out.println(&quot;Exiting program.&quot;);
+&nbsp;                break;
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+&nbsp;        scanner.close();*//*
+&nbsp;    }*/
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-09-30 13:28</div>
+</div>
+</body>
+</html>
